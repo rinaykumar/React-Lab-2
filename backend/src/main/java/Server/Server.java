@@ -1,5 +1,6 @@
 package Server;
 
+import DAO.NotesDAO;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -29,13 +30,17 @@ public class Server {
                 AddNoteDto noteDto = gson.fromJson(bodyString,
                         AddNoteDto.class);
                 // add it to the list
-                notes.add(noteDto.note);
+                // notes.add(noteDto.note);
+                NotesDAO notesDAO = NotesDAO.getInstance();
+                notesDAO.addNote(noteDto.note);
                 System.out.println(bodyString);
                 System.out.println(notes.size());
                 return "OK";
             });
             get("/getAllNotes", (req, res) -> {
-                NotesListDto list = new NotesListDto(notes);
+                NotesDAO notesDAO = NotesDAO.getInstance();
+                // NotesListDto list = new NotesListDto(notes);
+                NotesListDto list = notesDAO.getAllNotes();
                 return gson.toJson(list);
             });
             // if https then the body is encrypted
