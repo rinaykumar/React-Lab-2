@@ -2,6 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import axios from 'axios'; // don't forget this
+import Notes from './components/Notes';
 
 const test = <div>Hello!</div>; // jsx can be a variable
 
@@ -48,17 +49,7 @@ const App = () => {
           <div>
             <button onClick={submitNote}>Add Note</button>
           </div>
-          <div>
-            {notes.map((item) => {
-              // same as java
-              // convert each array item to an element
-              return (
-                <div>
-                  {item}
-                </div>
-              );
-            })}
-          </div>
+          <Notes notes={notes}/>
         </div>
       </header>
     </div>

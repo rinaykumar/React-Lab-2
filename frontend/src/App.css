@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+
+.notes-list{
+  height: 200px;
+  overflow-y: scroll;
+  width: 400px;
+}
+
+.notes-item{
+  padding: 5px;
+  border: 1px solid white;
+  margin-bottom: 5px;
+}
